@@ -1,4 +1,4 @@
-const posts = [
+let posts = JSON.parse(localStorage.getItem("posts")) || [
 	{
 		id: 1,
 		title: "บทความแรก",
@@ -16,6 +16,7 @@ const posts = [
 // ฟังก์ชันแสดงบทความในหน้า index.html
 function displayPosts() {
 	const container = document.getElementById("posts");
+	container.innerHTML = "";
 	posts.forEach((post) => {
 		const div = document.createElement("div");
 		div.className = "post";
