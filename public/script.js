@@ -21,11 +21,15 @@ function displayPosts() {
 		const div = document.createElement("div");
 		div.className = "post";
 		div.innerHTML = `
-        <div class="bg-white p-4 rounded-lg">
-            <h3 class="text-xl font-semibold">${post.title}</h3>
-            <p>${post.excerpt}</p>
-            <a href="post.html?id=${post.id}">อ่านต่อ</a>
-      `;
+		<div class="bg-white p-6 rounded-3xl shadow hover:shadow-md transition duration-300">
+			<h3 class="text-2xl font-bold text-gray-800 mb-2">${post.title}</h3>
+			<p class="text-gray-600 mb-4 line-clamp-3">${post.excerpt}</p>
+			<a href="post.html?id=${post.id}" class="inline-block text-blue-600 hover:underline font-medium">
+			อ่านต่อ →
+			</a>
+		</div>
+		`;
+
 		container.appendChild(div);
 	});
 }

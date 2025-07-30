@@ -11,11 +11,15 @@ function displayPost() {
 	}
 	const div = document.createElement("div");
 	div.className = "detailed-post";
-	div.innerHTML = `
-        <h1>${post.title}</h1>
-        <p>${post.content}</p>
-        <a href="index.html">Back to home</a>
-    `;
+	div.innerHTML = ` 
+	<div class="max-w-5xl mx-auto m-4 p-4 bg-white rounded shadow">
+		<h1 class="text-xl font-semibold text-center mb-4">${post.title}</h1>
+			<p class="break-words whitespace-pre-line max-h-[500px] overflow-auto">${post.content}</p>
+		<div class="text-center mt-6">
+			<a href="index.html" class="text-blue-500 hover:underline">Back to home</a>
+		</div>
+	</div>
+	`;
 	document.body.appendChild(div);
 }
 
