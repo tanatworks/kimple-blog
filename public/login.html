@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<body class="bg-gray-100 p-6">
+		<div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
+			<h1 class="text-3xl font-bold text-gray-800 mb-4 text-center">
+				Kimple's Login
+			</h1>
+			<form id="loginForm" class="space-y-4">
+				<div>
+					<label for="username" class="block font-semibold"
+						>Username</label
+					>
+					<input
+						type="text"
+						id="username"
+						class="w-full border rounded"
+						required
+					/>
+				</div>
+				<div>
+					<label class="block font-semibold">Password</label>
+					<input
+						type="password"
+						id="password"
+						class="w-full border rounded"
+						required
+					/>
+				</div>
+				<div class="text-center">
+					<button
+						type="submit"
+						class="text-gray-900 px-4 py-2 border rounded"
+					>
+						Log in
+					</button>
+				</div>
+			</form>
+		</div>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="login.js"></script>
+	</body>
+</html>
