@@ -11,9 +11,16 @@ function savePosts() {
 	localStorage.setItem("posts", JSON.stringify(posts));
 }
 
-function renderPosts() {
+function renderPosts(postArray = posts) {
 	postList.innerHTML = "";
-	posts.forEach((post, index) => {
+	if (postArray.length === 0) {
+		const li = document.createElement("li");
+		li.className = "text-gray-500 italic p-4";
+		li.textContent = "No posts found.";
+		postList.appendChild(li);
+		return;
+	}
+	postArray.forEach((post, index) => {
 		const li = document.createElement("li");
 		li.className = "border p-4 rounded bg-gray-50";
 		li.innerHTML = `
@@ -77,3 +84,21 @@ postForm.addEventListener("submit", (e) => {
 });
 
 renderPosts();
+
+document.getElementById("searchInput").addEventListener("input", function (e) {
+	const keyword = e.target.value.toLowerCase();
+	const filteredPosts = posts.filter(
+		(post) =>
+			post.title.toLowerCase().includes(keyword) ||
+			post.excerpt.toLowerCase().includes(keyword)
+	);
+
+	renderPosts(filteredPosts);
+});
+
+function startNewPost() {
+	postForm.reset();
+	postIdInput.value = "";
+	titleInput.focus();
+}
+document.getElementById("addButton").addEventListener("click", startNewPost);
