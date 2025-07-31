@@ -22,6 +22,7 @@ function displayPosts() {
 		div.className = "post";
 		div.innerHTML = `
 		<div class="bg-white p-6 rounded-3xl shadow hover:shadow-md transition duration-300">
+			<img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover rounded mb-4" />
 			<h3 class="text-2xl font-bold text-gray-800 mb-2">${post.title}</h3>
 			<p class="text-gray-600 mb-4 line-clamp-3">${post.excerpt}</p>
 			<a href="post.html?id=${post.id}" class="inline-block text-blue-600 hover:underline font-medium">

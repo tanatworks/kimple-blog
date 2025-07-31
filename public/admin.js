@@ -15,6 +15,7 @@ const excerptInput = document.getElementById("excerpt");
 const contentInput = document.getElementById("content");
 const postIdInput = document.getElementById("postId");
 const postList = document.getElementById("postList");
+const imageInput = document.getElementById("image");
 
 function savePosts() {
 	localStorage.setItem("posts", JSON.stringify(posts));
@@ -33,12 +34,14 @@ function renderPosts(postArray = posts) {
 		const li = document.createElement("li");
 		li.className = "border p-4 rounded bg-gray-50";
 		li.innerHTML = `
-      <h3 class="font-bold text-lg">${post.title}</h3>
-      <p>${post.excerpt}</p>
-      <div class="mt-2 space-x-2">
-        <button onclick="editPost(${index})" class="text-blue-600">Edit</button>
-        <button onclick="deletePost(${index})" class="text-red-600">Delete</button>
-      </div>
+		<img src="${post.image}" class="w-full h-48 object-cover rounded mb-2" />
+		<h3 class="font-bold text-lg">${post.title}</h3>
+		<p>${post.excerpt}</p>
+		<p class="text-sm text-gray-400">Created: ${post.createdAt}</p>
+		<div class="mt-2 space-x-2">
+			<button onclick="editPost(${index})" class="text-blue-600">Edit</button>
+			<button onclick="deletePost(${index})" class="text-red-600">Delete</button>
+		</div>
     `;
 		postList.appendChild(li);
 	});
@@ -49,6 +52,7 @@ function editPost(index) {
 	titleInput.value = post.title;
 	excerptInput.value = post.excerpt;
 	contentInput.value = post.content;
+	imageInput.value = post.image || "";
 	postIdInput.value = post.id;
 }
 
@@ -73,6 +77,8 @@ postForm.addEventListener("submit", (e) => {
 			title,
 			excerpt,
 			content,
+			createdAt: new Date().toLocaleString(),
+			image: imageInput.value,
 		});
 	} else {
 		const index = posts.findIndex((p) => p.id == id);
@@ -82,6 +88,8 @@ postForm.addEventListener("submit", (e) => {
 				title,
 				excerpt,
 				content,
+				createdAt: new Date().toLocaleString(),
+				image: imageInput.value,
 			};
 		}
 	}

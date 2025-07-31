@@ -13,6 +13,7 @@ function displayPost() {
 	div.className = "detailed-post";
 	div.innerHTML = ` 
 	<div class="max-w-5xl mx-auto m-4 p-4 bg-white rounded shadow">
+		<img src="${post.image}" class="w-full h-64 object-cover rounded mb-4" />
 		<h1 class="text-xl font-semibold text-center mb-4">${post.title}</h1>
 			<p class="break-words whitespace-pre-line max-h-[500px] overflow-auto">${post.content}</p>
 		<div class="text-center mt-6">
