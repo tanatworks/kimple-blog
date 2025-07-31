@@ -7,6 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 	const validPassword = "1234";
 
 	if (username === validUsername && password === validPassword) {
+		localStorage.setItem("isLoggedIn", "true");
 		window.location.href = "admin.html";
 	} else {
 		alert("Invalid username or password");

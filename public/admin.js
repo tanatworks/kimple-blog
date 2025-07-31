@@ -1,3 +1,12 @@
+if (localStorage.getItem("isLoggedIn") !== "true") {
+	window.location.href = "login.html";
+}
+
+function logout() {
+	localStorage.removeItem("isLoggedIn");
+	window.location.href = "index.html";
+}
+
 let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
 const postForm = document.getElementById("postForm");
